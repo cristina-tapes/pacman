@@ -1,7 +1,7 @@
 // Copyright 2010 Google Inc. All Rights Reserved.
 
 package pacman;
-
+// Gigi control
 import com.google.appengine.api.channel.ChannelMessage;
 import com.google.appengine.api.channel.ChannelService;
 import com.google.appengine.api.channel.ChannelServiceFactory;
