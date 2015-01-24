@@ -834,6 +834,7 @@ var PACMAN = (function () {
     }
 
     function keyDown(e) {
+        
         if (e.keyCode === KEY.N) {
             startNewGame();
         } else if (e.keyCode === KEY.S) {
@@ -1001,6 +1002,41 @@ var PACMAN = (function () {
             }
         } 
 
+        var display = {
+          'other-player': 'none',
+          'your-move': 'none',
+          'their-move': 'none',
+          'you-won': 'none',
+          'you-lost': 'none',
+          'board': 'block',
+          'this-game': 'block',
+        };
+
+        if (!state.userO || state.userO == '') {
+            display['other-player'] = 'block';
+            display['board'] = 'none';
+            display['this-game'] = 'none';
+        } else if (state.winner == state.me) {
+            display['you-won'] = 'block';
+        } else if (state.winner != '') {
+            display['you-lost'] = 'block';
+        } else if (isMyMove()) {
+            display['your-move'] = 'block';
+        } else {
+            display['their-move'] = 'block';
+        }
+
+        $.each(display, function( index, value ) {
+            $("#" + index).css("display", value);
+        });
+
+        // for (var label in display) {
+        //     if (label == 'board') {
+        //         var a = 1
+        //     }
+        //     document.getElementById(label).style.display = display[label];
+        // }
+
         drawFooter();
     }
 
@@ -1114,34 +1150,6 @@ var PACMAN = (function () {
                     square.style.background = "white";
                 }
             }
-        }
-
-        var display = {
-          'other-player': 'none',
-          'your-move': 'none',
-          'their-move': 'none',
-          'you-won': 'none',
-          'you-lost': 'none',
-          'board': 'block',
-          'this-game': 'block',
-        };
-
-        if (!state.userO || state.userO == '') {
-            display['other-player'] = 'block';
-            display['board'] = 'none';
-            display['this-game'] = 'none';
-        } else if (state.winner == state.me) {
-            display['you-won'] = 'block';
-        } else if (state.winner != '') {
-            display['you-lost'] = 'block';
-        } else if (isMyMove()) {
-            display['your-move'] = 'block';
-        } else {
-            display['their-move'] = 'block';
-        }
-
-        for (var label in display) {
-            document.getElementById(label).style.display = display[label];
         }
     };
 

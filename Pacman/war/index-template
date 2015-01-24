@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Google App Engine Pacman</title>
     
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <style type="text/css">
       @font-face {
 	    font-family: 'BDCartoonShoutRegular';
@@ -29,20 +30,23 @@
 </head>
 
 <body>
-  
-  <div id="shim">shim for font face</div>
-
-  <h1>Google App Engine Pacman</h1>
-  
   <div id='display-area'>
-      <div id='other-player' style='display:none'>
-        Waiting for another player to join.<br>
-        Send them this link to play:<br>
-        <div id='game-link'><a href='{{ game_link }}'>{{ game_link }}</a></div>
-      </div>
+    <div id="shim">shim for font face</div>
+
+    <h1>Google App Engine Pacman</h1>    
+    
+    <div id='other-player' style='display:none'>
+      Waiting for another player to join.<br>
+      Send them this link to play:<br>
+      <div id='game-link'><a href='{{ game_link }}'>{{ game_link }}</a></div>
+    </div>
+    
+    <div id='board'>
+      <div id="pacman"></div>
+    </div>
+
   </div>
 
-  <div id="pacman"></div>
   <script src="pacman.js"></script>
   <script src="modernizr-1.5.min.js"></script>
 
